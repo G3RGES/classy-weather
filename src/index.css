@@ -89,3 +89,28 @@ input:focus {
   font-size: 2.4rem;
   font-weight: 700;
 }
+
+button {
+  background-color: #1a365d; /* Matches the dark navy in your title */
+  color: #ffffff;
+  padding: 10px 24px;
+  font-size: 16px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.1s ease;
+  margin-top: 15px;
+}
+
+/* Hover effect to make it interactive */
+button:hover {
+  background-color: #2c5282;
+}
+
+/* Slight 'press' effect when clicked */
+button:active {
+  transform: scale(0.98);
+}
