@@ -144,6 +144,10 @@ class Input extends Component {
 }
 
 class Weather extends Component {
+  componentWillUnmount() {
+    console.log("Weather will unmount");
+  }
+
   render() {
     const {
       temperature_2m_max: max,
