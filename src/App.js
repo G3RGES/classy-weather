@@ -107,10 +107,6 @@ export default class App extends Component {
 }
 
 class Weather extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const {
       temperature_2m_max: max,
