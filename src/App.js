@@ -75,19 +75,22 @@ export default class App extends Component {
     }
   };
 
+  setLocation = (e) => {
+    this.setState({ location: e.target.value });
+  };
+
   render() {
     return (
       <div className="app">
         <h1>Classy Weather</h1>
 
-        <div>
-          <input
-            type="text"
-            placeholder="Search for a city...."
-            value={this.state.location}
-            onChange={(e) => this.setState({ location: e.target.value })}
-          />
-        </div>
+        <Input
+          location={this.state.location}
+          onChangeLocation={this.setLocation}
+          placeholder="Search for a city...."
+          type="text"
+          value={this.state.location}
+        />
 
         <button onClick={this.fetchWeather} style={{}}>
           Get Weather
@@ -101,6 +104,21 @@ export default class App extends Component {
             location={this.state.displayLocation}
           />
         )}
+      </div>
+    );
+  }
+}
+
+class Input extends Component {
+  render() {
+    return (
+      <div>
+        <input
+          type={this.props.type}
+          placeholder={this.props.placeholder}
+          value={this.props.value}
+          onChange={this.props.onChangeLocation}
+        />
       </div>
     );
   }
