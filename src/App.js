@@ -68,6 +68,8 @@ export default class App extends Component {
       );
       const weatherData = await weatherRes.json();
       this.setState({ weather: weatherData.daily });
+
+      // localStorage.setItem("location", this.state.location);
     } catch (err) {
       console.error(err);
     } finally {
@@ -78,6 +80,23 @@ export default class App extends Component {
   setLocation = (e) => {
     this.setState({ location: e.target.value });
   };
+
+  componentDidMount() {
+    // this.fetchWeather();
+
+    this.setState({
+      location: localStorage.getItem("location") || "",
+    });
+  }
+
+  //* could use this or the button to fetch
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.location !== this.state.location) {
+      this.fetchWeather();
+
+      localStorage.setItem("location", this.state.location);
+    }
+  }
 
   render() {
     return (
@@ -92,9 +111,9 @@ export default class App extends Component {
           value={this.state.location}
         />
 
-        <button onClick={this.fetchWeather} style={{}}>
+        {/* <button onClick={this.fetchWeather} style={{}}>
           Get Weather
-        </button>
+        </button> */}
 
         {this.state.isLoading && <p className="loader">Loading...</p>}
 
